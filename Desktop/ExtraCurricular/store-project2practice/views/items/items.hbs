@@ -1,0 +1,15 @@
+<h2>Items:</h2>
+
+{{#each itemFromDB}}
+ <section class="item-description">
+        <h2>{{this.title}}</h2>
+        <p>
+            Name: {{this.name}}<br />
+            Price: {{this.price}} <br />
+            Ticker: {{this.ticker}}
+
+            <a href="/items/{{id}}">Details</a>
+        </p>
+
+    </section>
+{{/each}}
