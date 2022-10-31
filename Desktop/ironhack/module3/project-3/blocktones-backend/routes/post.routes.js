@@ -28,9 +28,8 @@ router.post('/post', (req, res, next) => {
 
 
 //get
-router.get('/posts', (req, res, next) => {
+router.get('/post', (req, res, next) => {
   Post.find()
-    .populate('posts')
     .then(allPosts => res.json(allPosts))
     .catch(err =>
       {console.log("error getting list of posts...", err);
@@ -55,7 +54,7 @@ router.get('/post/:postId', (req, res, next) =>
   }
 
 Post.findById(postId)
-.populate('user')
+.populate('post')
 .then(post => res.json(post))
 .catch(err => {
   console.log("error getting post details...", err);
@@ -90,6 +89,7 @@ router.delete('/post/:postId', (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(postId)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
+    
   }
  
   Post.findByIdAndRemove(postId)
